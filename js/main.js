@@ -1,5 +1,6 @@
 const select = document.querySelector('.js_select');
 const btnPlay = document.querySelector('.js_btnPlay');
+const btnRestart = document.querySelector('.js_btnRestart');
 const msn = document.querySelector('.js_msn');
 const playerScore = document.querySelector('.js_playerScore');
 const computerScore = document.querySelector('.js_computerScore');
@@ -8,9 +9,28 @@ const msnWin = '¡Has ganado!';
 
 playerScore.innerHTML = 0;
 computerScore.innerHTML = 0;
+let movements = 0;
 
 function getRandomNumber(max) {
   return Math.ceil(Math.random() * max);
+}
+
+function btnDisplay(btnAdd, btnRemove) {
+  btnAdd.classList.add('hidden');
+  btnRemove.classList.remove('hidden');
+}
+function countMovemenst() {
+  if (movements <= 8) {
+    movements += 1;
+    console.log(movements);
+  } else {
+    if (computerScore.innerHTML > playerScore.innerHTML) {
+      msn.innerHTML = '¡HAS PERDIDO =( ! ';
+    } else {
+      msn.innerHTML = '¡HAS GANADO =) ! ';
+    }
+    btnDisplay(btnPlay, btnRestart);
+  }
 }
 
 function computerMovement() {
@@ -60,6 +80,7 @@ function compareMovements() {
       playerWin(computerResult);
     }
   }
+  countMovemenst();
 }
 
 function handleClickPlay(event) {
@@ -67,4 +88,14 @@ function handleClickPlay(event) {
   compareMovements();
 }
 
+function handleClickRestart(event) {
+  event.preventDefault();
+  playerScore.innerHTML = 0;
+  computerScore.innerHTML = 0;
+  movements = 0;
+  btnDisplay(btnRestart, btnPlay);
+  msn.innerHTML = 'Vamos a jugar';
+}
+
 btnPlay.addEventListener('click', handleClickPlay);
+btnRestart.addEventListener('click', handleClickRestart);

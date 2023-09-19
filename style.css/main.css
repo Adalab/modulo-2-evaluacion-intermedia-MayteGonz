@@ -2,3 +2,7 @@
 .main {
   margin-left: 35%;
 }
+
+.hidden {
+  display: none;
+}
