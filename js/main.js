@@ -3,6 +3,11 @@ const btnPlay = document.querySelector('.js_btnPlay');
 const msn = document.querySelector('.js_msn');
 const playerScore = document.querySelector('.js_playerScore');
 const computerScore = document.querySelector('.js_computerScore');
+const msnLost = '¡Has perdido!';
+const msnWin = '¡Has ganado!';
+
+playerScore.innerHTML = 0;
+computerScore.innerHTML = 0;
 
 function getRandomNumber(max) {
   return Math.ceil(Math.random() * max);
@@ -21,31 +26,38 @@ function computerMovement() {
   console.log(result);
   return result;
 }
+function computerWin(computerResult) {
+  msn.innerHTML = msnLost + `La computadora ha elegido ${computerResult}`;
+  computerScore.innerHTML = parseInt(computerScore.innerHTML) + 1;
+}
+function playerWin(computerResult) {
+  msn.innerHTML = msnWin + `La computadora ha elegido ${computerResult}`;
+  playerScore.innerHTML = parseInt(playerScore.innerHTML) + 1;
+}
 
-const msnLost = '¡Has perdido!';
-const msnWin = '¡Has ganado!';
 function compareMovements() {
   const playerResult = select.value;
   const computerResult = computerMovement();
   if (playerResult === computerResult) {
-    msn.innerHTML = 'Empate';
+    msn.innerHTML = `¡Empate! La computadora ha elegido ${computerResult}`;
   } else if (playerResult === 'piedra') {
     if (computerResult === 'papel') {
-      msn.innerHTML = msnLost;
+      computerWin(computerResult);
     } else if (computerResult === 'tijera') {
-      msn.innerHTML = msnWin;
+      playerWin(computerResult);
     }
   } else if (playerResult === 'papel') {
     if (computerResult === 'piedra') {
-      msn.innerHTML = msnWin;
+      playerWin(computerResult);
     } else if (computerResult === 'tijera') {
-      msn.innerHTML = msnLost;
+      computerWin(computerResult);
     }
   } else {
     if (computerResult === 'piedra') {
-      msn.innerHTML = msnLost;
+      computerWin(computerResult);
     } else if (computerResult === 'papel') {
       msn.innerHTML = msnWin;
+      playerWin(computerResult);
     }
   }
 }
