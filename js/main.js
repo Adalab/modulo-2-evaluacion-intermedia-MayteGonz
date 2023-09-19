@@ -9,7 +9,7 @@ const msnWin = '¡Has ganado!';
 
 playerScore.innerHTML = 0;
 computerScore.innerHTML = 0;
-let movements = 0;
+let movements = 1;
 
 function getRandomNumber(max) {
   return Math.ceil(Math.random() * max);
@@ -19,11 +19,12 @@ function btnDisplay(btnAdd, btnRemove) {
   btnAdd.classList.add('hidden');
   btnRemove.classList.remove('hidden');
 }
+
 function countMovemenst() {
-  if (movements <= 8) {
+  console.log(movements);
+  if (movements <= 9) {
     movements += 1;
-    console.log(movements);
-  } else {
+  } else if ((movements = 10)) {
     if (computerScore.innerHTML > playerScore.innerHTML) {
       msn.innerHTML = '¡HAS PERDIDO =( ! ';
     } else {
@@ -94,7 +95,7 @@ function handleClickRestart(event) {
   computerScore.innerHTML = 0;
   movements = 0;
   btnDisplay(btnRestart, btnPlay);
-  msn.innerHTML = 'Vamos a jugar';
+  msn.innerHTML = '¡Vamos a Jugar!';
 }
 
 btnPlay.addEventListener('click', handleClickPlay);
