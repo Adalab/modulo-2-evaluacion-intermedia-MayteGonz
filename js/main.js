@@ -9,7 +9,7 @@ function getRandomNumber(max) {
 }
 
 function computerMovement() {
-  let randomNum = getRandomNumber(9);
+  const randomNum = getRandomNumber(9);
   let result = '';
   if (randomNum <= 3) {
     result = 'piedra';
@@ -18,12 +18,41 @@ function computerMovement() {
   } else {
     result = 'tijera';
   }
+  console.log(result);
   return result;
 }
-function playerMovement() {}
+
+const msnLost = '¡Has perdido!';
+const msnWin = '¡Has ganado!';
+function compareMovements() {
+  const playerResult = select.value;
+  const computerResult = computerMovement();
+  if (playerResult === computerResult) {
+    msn.innerHTML = 'Empate';
+  } else if (playerResult === 'piedra') {
+    if (computerResult === 'papel') {
+      msn.innerHTML = msnLost;
+    } else if (computerResult === 'tijera') {
+      msn.innerHTML = msnWin;
+    }
+  } else if (playerResult === 'papel') {
+    if (computerResult === 'piedra') {
+      msn.innerHTML = msnWin;
+    } else if (computerResult === 'tijera') {
+      msn.innerHTML = msnLost;
+    }
+  } else {
+    if (computerResult === 'piedra') {
+      msn.innerHTML = msnLost;
+    } else if (computerResult === 'papel') {
+      msn.innerHTML = msnWin;
+    }
+  }
+}
 
 function handleClickPlay(event) {
   event.preventDefault();
+  compareMovements();
 }
 
 btnPlay.addEventListener('click', handleClickPlay);
