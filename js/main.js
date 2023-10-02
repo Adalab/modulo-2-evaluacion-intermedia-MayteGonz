@@ -1,3 +1,4 @@
+'use strict';
 const select = document.querySelector('.js_select');
 const btnPlay = document.querySelector('.js_btnPlay');
 const btnRestart = document.querySelector('.js_btnRestart');
@@ -24,11 +25,13 @@ function countMovemenst() {
   console.log(movements);
   if (movements <= 9) {
     movements += 1;
-  } else if ((movements = 10)) {
+  } else if (movements === 10) {
     if (computerScore.innerHTML > playerScore.innerHTML) {
       msn.innerHTML = '¡HAS PERDIDO =( ! ';
-    } else {
+    } else if (computerScore.innerHTML < playerScore.innerHTML) {
       msn.innerHTML = '¡HAS GANADO =) ! ';
+    } else {
+      msn.innerHTML = '¡EMPATE! =) ! ';
     }
     btnDisplay(btnPlay, btnRestart);
   }
@@ -59,29 +62,33 @@ function playerWin(computerResult) {
 function compareMovements() {
   const playerResult = select.value;
   const computerResult = computerMovement();
-  if (playerResult === computerResult) {
-    msn.innerHTML = `¡Empate! La computadora ha elegido ${computerResult}`;
-  } else if (playerResult === 'piedra') {
-    if (computerResult === 'papel') {
-      computerWin(computerResult);
-    } else if (computerResult === 'tijera') {
-      playerWin(computerResult);
+  if (playerResult != '') {
+    if (playerResult === computerResult) {
+      msn.innerHTML = `¡Empate! La computadora ha elegido ${computerResult}`;
+    } else if (playerResult === 'piedra') {
+      if (computerResult === 'papel') {
+        computerWin(computerResult);
+      } else if (computerResult === 'tijera') {
+        playerWin(computerResult);
+      }
+    } else if (playerResult === 'papel') {
+      if (computerResult === 'piedra') {
+        playerWin(computerResult);
+      } else if (computerResult === 'tijera') {
+        computerWin(computerResult);
+      }
+    } else {
+      if (computerResult === 'piedra') {
+        computerWin(computerResult);
+      } else if (computerResult === 'papel') {
+        msn.innerHTML = msnWin;
+        playerWin(computerResult);
+      }
     }
-  } else if (playerResult === 'papel') {
-    if (computerResult === 'piedra') {
-      playerWin(computerResult);
-    } else if (computerResult === 'tijera') {
-      computerWin(computerResult);
-    }
+    countMovemenst();
   } else {
-    if (computerResult === 'piedra') {
-      computerWin(computerResult);
-    } else if (computerResult === 'papel') {
-      msn.innerHTML = msnWin;
-      playerWin(computerResult);
-    }
+    msn.innerHTML = 'Seleccione una jugada válida';
   }
-  countMovemenst();
 }
 
 function handleClickPlay(event) {
