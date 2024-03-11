@@ -22,7 +22,6 @@ function btnDisplay(btnAdd, btnRemove) {
 }
 
 function countMovemenst() {
-  console.log(movements);
   if (movements <= 9) {
     movements += 1;
   } else if (movements === 10) {
@@ -47,7 +46,7 @@ function computerMovement() {
   } else {
     result = 'tijera';
   }
-  console.log(result);
+
   return result;
 }
 function computerWin(computerResult) {

@@ -3,31 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Evaluación Intermedia</title>
+    <title>Bulbasaur, Charmander o Squirtle</title>
     <link rel="stylesheet" href="./style.css/main.css" />
   </head>
-  <body>
+  <body class="body">
     <header class="header">
-      <h1>Juego Piedra, Papel y Tijera</h1>
+      <h1 class="title">Bulbasaur, Charmander o Squirtle</h1>
+      <p class="subtitle">¡El piedra, papel o tijera, pero con Pokémon!</p>
+      <div class="hero"></div>
     </header>
     <main class="main">
-      <h2>Introduce aquí tu jugada:</h2>
+      <h2 class="game">Elije tu pokémon para jugar:</h2>
       <form>
         <select class="js_select" name="" id="">
-          <option value="" selected disabled hidden>
-            Seleccione su jugada
-          </option>
-          <option value="piedra">Piedra</option>
-          <option value="papel">Papel</option>
-          <option value="tijera">Tijera</option>
+          <option value="" selected disabled hidden></option>
+          <option value="piedra">Bulbasaur</option>
+          <option value="papel">Charmander</option>
+          <option value="tijera">Squirtle</option>
         </select>
         <button class="js_btnPlay">Jugar</button>
         <button class="js_btnRestart hidden">Reiniciar Juego</button>
       </form>
-      <p class="js_msn">¡Vamos a Jugar!</p>
-      <p>Jugador: <span class="js_playerScore"></span></p>
-      <p>Computadora: <span class="js_computerScore"></span></p>
+      <section class="marker">
+        <p class="js_msn">Puntuación</p>
+        <p>Jugador: <span class="js_playerScore"></span></p>
+        <p>Computadora: <span class="js_computerScore"></span></p>
+      </section>
     </main>
+
     <script src="./js/main.js"></script>
   </body>
 </html>

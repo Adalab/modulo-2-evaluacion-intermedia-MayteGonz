@@ -1,9 +1,32 @@
-.header {
-  text-align: center;
-  margin-top: 100px;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-.main {
+/* html {
+  font-size: 62.5%;
+} */
+body {
+  background-color: #f0f0f0;
   text-align: center;
+}
+.header {
+  padding: 20px;
+}
+.hero {
+  background: url(../images/pokemons_iniciales.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 220px;
+  background-size: 40%;
+  mix-blend-mode: multiply;
+}
+
+.title {
+  color: #ee1515;
+}
+.subtitle {
+  color: #222224;
 }
 
 .hidden {
